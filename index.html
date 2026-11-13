@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#171522" />
+<title>Crimson Crown — A Vampire's Quest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<main class="game-shell">
+  <header class="topbar">
+    <div class="brand-mark"><span class="brand-gem">✦</span><span>CRIMSON CROWN</span><i>AN ISEKAI RPG</i></div>
+    <div class="top-right"><span class="chapter-tag"><span class="live-dot"></span> CHAPTER 01</span><button class="icon-btn" id="soundBtn" aria-label="Toggle sound">♫ <span>SOUND OFF</span></button><button class="icon-btn" id="helpBtn" aria-label="Help">? <span>HOW TO PLAY</span></button></div>
+  </header>
+  <section class="game-layout">
+    <aside class="left-column">
+      <div class="portrait-frame"><div class="portrait-glow"></div><img src="assets/protagonist.jpg" alt="The protagonist: a white-haired vampire girl" /><div class="portrait-label"><span class="pixel-heart">♥</span> THE NEW DEMON</div><div class="portrait-level">LV <b id="level">01</b></div></div>
+      <article class="card status-card">
+        <div class="section-kicker">✦ &nbsp;STATUS</div><h1>Seren<br><em>Valeblood</em></h1><p class="class-line">VAMPIRE · THE RELUCTANT</p>
+        <div class="stat-row"><span>HP</span><div class="meter"><i class="hp-fill" id="hpBar"></i></div><b id="hpText">34 / 34</b></div>
+        <div class="stat-row"><span>MP</span><div class="meter"><i class="mp-fill" id="mpBar"></i></div><b id="mpText">18 / 18</b></div>
+        <div class="xp-row"><span>EXP</span><div class="meter xp-meter"><i id="xpBar"></i></div><b id="xpText">0 / 30</b></div>
+        <div class="resource-row"><span>◈ &nbsp; BLOOD SHARDS</span><b id="shardCount">0</b></div>
+      </article>
+      <article class="card party-card"><div class="section-kicker">✦ &nbsp;YOUR COVEN <span id="partyCount">01 / 03</span></div><div id="partyList"></div><button class="tame-hint" id="tameHint"><span>＋</span> Tame a monster to recruit it</button></article>
+      <article class="system-card"><span class="system-icon">▣</span><div><b>SYSTEM OBJECTIVE</b><p>Become the Demon King</p></div><span class="objective-arrow">↗</span></article>
+    </aside>
+    <section class="center-column">
+      <div class="scene-top"><div><div class="scene-chapter">THE DUSKWOOD FRONTIER <span>•</span> DAY 01</div><h2 id="sceneTitle">A Crown in the Dark</h2></div><div class="location-chip"><span>⌖</span> DUSKWOOD</div></div>
+      <div class="scene-frame"><div class="scene-canvas" id="sceneCanvas"><div class="scene-stars"></div><div class="moon"></div><div class="forest-back"></div><div class="ruins"><i></i><i></i><i></i></div><div class="ground"></div><div class="battle-vignette" id="battleVignette"></div><div class="sprite-area" id="spriteArea"></div><div class="scene-caption" id="sceneCaption"><span class="caption-icon">✦</span><span>“Wait... I was just going home. What is this place?”</span></div><div class="scene-fade"></div></div><div class="scene-controls"><span><i class="control-dot"></i> <b id="sceneState">EXPLORATION</b></span><span class="scene-hint" id="sceneHint">A strange presence stirs nearby...</span><span class="pixel-coords">X: 08 &nbsp; Y: 14</span></div></div>
+      <div class="encounter-row" id="encounterRow"><div class="encounter-copy"><span class="encounter-icon">⚔</span><div><b id="encounterHeading">THE WOODS ARE WATCHING</b><p id="encounterDescription">Something rustles in the gloom. Step forward?</p></div></div><button class="primary-btn" id="encounterBtn">EXPLORE <span>→</span></button></div>
+      <div class="battle-panel hidden" id="battlePanel"><div class="battle-head"><div><span class="battle-label">✦ ENCOUNTER</span><h3 id="battleTitle">A wild foe appears!</h3></div><div class="turn-badge">YOUR TURN <span>✦</span></div></div><div class="enemy-display" id="enemyDisplay"></div><div class="combat-log" id="combatLog" aria-live="polite"></div><div class="action-area"><div class="action-heading">CHOOSE YOUR ACTION <span>1 — 4</span></div><div class="action-grid"><button class="action-btn attack-action" data-action="attack"><span class="action-icon">⚔</span><span><b>ATTACK</b><small>Reliable strike</small></span><kbd>1</kbd></button><button class="action-btn skill-action" data-action="skill"><span class="action-icon">✦</span><span><b>CRIMSON DRAIN</b><small>12 MP · damage + heal</small></span><kbd>2</kbd></button><button class="action-btn tame-action" data-action="tame"><span class="action-icon">♧</span><span><b>OFFER PACT</b><small id="tameChance">Try to tame this foe</small></span><kbd>3</kbd></button><button class="action-btn item-action" data-action="item"><span class="action-icon">✚</span><span><b>USE TONIC</b><small>Restore 18 HP</small></span><kbd>4</kbd></button></div></div></div>
+      <div class="story-card" id="storyCard"><div class="story-glyph">“</div><p id="storyText">You died on an ordinary Tuesday. You woke up with fangs, a strange new name, and a glowing menu in your vision.</p><span id="storyAttribution">— SYSTEM MESSAGE, PROBABLY</span><button id="storyContinue">CONTINUE <span>→</span></button></div>
+      <div class="bottom-note"><span>▤</span> A CLASSIC-INSPIRED ADVENTURE <i>•</i> PROGRESS SAVES AUTOMATICALLY</div>
+    </section>
+    <aside class="right-column">
+      <article class="card objective-card"><div class="section-kicker">▣ &nbsp;MAIN QUEST <span class="quest-urgent">ACTIVE</span></div><div class="quest-icon">♛</div><h3>The Demon King's<br>Empty Throne</h3><p>Every monster you befriend is another step toward the crown. The old king won't give it up willingly.</p><div class="quest-progress"><div><span>CONQUEST</span><b id="questPercent">0%</b></div><div class="meter"><i id="questBar"></i></div><small id="questHint">Win your first battle to begin</small></div></article>
+      <article class="card journal-card"><div class="journal-head"><div class="section-kicker">✦ &nbsp;FIELD NOTES</div><span class="note-count" id="noteCount">01</span></div><div class="journal-list" id="journalList"></div></article>
+      <article class="card inventory-card"><div class="section-kicker">✦ &nbsp;PACK</div><div class="inventory-item"><span class="item-emoji">🧪</span><div><b>Bloodroot Tonic</b><small>Potent restorative</small></div><span class="item-count" id="tonicCount">2</span></div><div class="inventory-item"><span class="item-emoji shard">◆</span><div><b>Blood Shards</b><small>Useful for pacts</small></div><span class="item-count" id="shardCount2">0</span></div></article>
+      <div class="save-stamp"><span>▣</span><span>GAME SAVED<br><b id="saveTime">JUST NOW</b></span><i>✓</i></div>
+    </aside>
+  </section>
+  <footer class="footer"><span>CRIMSON CROWN <i>v1.0</i></span><span>MADE WITH ♥ &amp; A LITTLE DARK MAGIC</span><span>© THE DUSKWOOD CHRONICLES</span></footer>
+</main>
+<div class="toast" id="toast"></div>
+<div class="modal-backdrop hidden" id="helpModal"><div class="help-modal"><button class="modal-close" id="closeHelp">×</button><span class="section-kicker">✦ &nbsp;FIELD GUIDE</span><h2>How to play</h2><p>Explore the Duskwood, battle its creatures, and build your coven. Your progress saves automatically.</p><div class="help-rule"><b>⚔ TURN-BASED BATTLE</b><span>Attack or cast Crimson Drain. Use tonics to recover. Defeated foes grant EXP and shards.</span></div><div class="help-rule"><b>♧ TAME MONSTERS</b><span>Offer a pact to a weakened foe. Taming costs shards; your coven can hold 3 companions.</span></div><div class="help-rule"><b>♛ BECOME THE DEMON KING</b><span>Win battles, grow stronger, and recruit creatures to make progress toward your objective.</span></div><button class="primary-btn modal-ok" id="gotIt">GOT IT <span>→</span></button></div></div>
+<script src="game.js"></script>
+</body>
+</html>
