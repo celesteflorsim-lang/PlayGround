@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#171522" />
+  <title>Crown of Night — A Reincarnation RPG</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <div class="brand-mark">✦</div>
+      <div class="brand"><span class="brand-title">CROWN <i>OF</i> NIGHT</span><span class="brand-sub">A REINCARNATION RPG</span></div>
+      <div class="chapter-tag"><span class="status-dot"></span><span id="chapter-label">PROLOGUE · THE AWAKENING</span></div>
+      <button class="sound-button" id="sound-button" aria-label="Toggle sound">♫ <span>SOUND OFF</span></button>
+    </header>
+    <div class="game-layout">
+      <section class="play-column">
+        <div class="scene-frame">
+          <div class="scene-topline"><span id="location-name">THE OLD WORLD</span><span class="scene-coordinate">✧ <span id="time-label">NIGHTFALL</span></span></div>
+          <div class="canvas-wrap" id="canvas-wrap">
+            <canvas id="scene" width="640" height="400" aria-label="Pixel art game scene"></canvas>
+            <div class="scene-overlay" id="scene-overlay"></div>
+            <div class="toast" id="toast" aria-live="polite"></div>
+          </div>
+          <div class="scene-footer"><span class="tiny-key">W A S D</span><span>MOVE</span><span class="footer-divider">·</span><span class="tiny-key">E</span><span>INTERACT</span><span class="footer-spacer"></span><span id="world-hint">Find your bearings</span></div>
+        </div>
+        <section class="dialogue-box hidden" id="dialogue-box" aria-live="polite">
+          <div class="dialogue-avatar" id="dialogue-avatar">✦</div>
+          <div class="dialogue-content"><div class="speaker" id="dialogue-speaker">SYSTEM</div><p id="dialogue-text"></p></div>
+          <button class="dialogue-next" id="dialogue-next">CONTINUE <b>▸</b></button>
+        </section>
+        <section class="battle-panel hidden" id="battle-panel">
+          <div class="battle-enemy-info"><span class="enemy-name" id="enemy-name">GLOOM SLIME</span><span class="enemy-level" id="enemy-level">LV 2</span><div class="enemy-hp-track"><span id="enemy-hp-fill"></span></div><span class="enemy-hp-text" id="enemy-hp-text">18 / 18</span></div>
+          <div class="battle-log" id="battle-log" aria-live="polite">A wild creature blocks your path!</div>
+          <div class="battle-actions" id="battle-actions"></div>
+          <div class="battle-submenu hidden" id="battle-submenu"></div>
+          <div class="battle-party" id="battle-party"></div>
+        </section>
+        <div class="intro-screen" id="intro-screen">
+          <div class="intro-art"><div class="moon"></div><div class="intro-silhouette">✦</div></div>
+          <div class="intro-copy"><div class="eyebrow">A STORY OF SECOND CHANCES</div><h1>One ordinary life.<br /><em>One impossible crown.</em></h1><p>You were just a girl with a tomorrow to worry about. Then came the darkness—and a voice that promised you a new world, a new life, and one impossible objective.</p><div class="system-quote"><span>▣ SYSTEM DIRECTIVE</span><strong>Become the Demon King.</strong></div><button class="primary-button" id="begin-button">BEGIN YOUR SECOND LIFE <b>→</b></button><span class="intro-note">A turn-based fantasy adventure · Save automatically</span></div>
+        </div>
+      </section>
+      <aside class="sidebar">
+        <section class="hero-card">
+          <div class="hero-card-top"><span>YOUR NEW LIFE</span><span class="class-badge">✦ VAMPIRE</span></div>
+          <div class="hero-identity"><div class="portrait-frame"><canvas id="portrait" width="80" height="96"></canvas><span class="portrait-star">✦</span></div><div class="hero-name-block"><h2>Rin</h2><span class="hero-title">THE UNWILLING HEIR</span><div class="level-line"><span>LV <b id="hero-level">1</b></span><span class="exp-line"><i id="exp-fill"></i></span><span id="hero-exp">0/20</span></div></div></div>
+          <div class="stat-bars"><div class="stat-line"><span class="stat-icon hp-icon">♥</span><span>HP</span><div class="meter"><i class="hp-meter" id="hero-hp-fill"></i></div><b id="hero-hp">32 / 32</b></div><div class="stat-line"><span class="stat-icon mp-icon">✧</span><span>MP</span><div class="meter"><i class="mp-meter" id="hero-mp-fill"></i></div><b id="hero-mp">12 / 12</b></div></div>
+          <div class="quick-stats"><div><span>ATK</span><b id="hero-atk">7</b></div><div><span>DEF</span><b id="hero-def">4</b></div><div><span>GIL</span><b id="hero-gil">0</b></div><div><span>SHARDS</span><b id="hero-shards">0</b></div></div>
+        </section>
+        <section class="side-section quest-section"><div class="section-heading"><span>▤</span> SYSTEM OBJECTIVE <span class="quest-active">ACTIVE</span></div><div class="quest-title" id="quest-title">A crown in the dark</div><p id="quest-description">Discover what this world expects of you.</p><div class="quest-progress"><span id="quest-progress"></span></div><div class="quest-progress-label" id="quest-progress-label">PROLOGUE</div></section>
+        <section class="side-section party-section"><div class="section-heading"><span>♧</span> YOUR COVEN <span class="party-count" id="party-count">01 / 03</span></div><div id="party-list" class="party-list"></div><button class="manage-button" id="manage-button">COVEN DETAILS <span>↗</span></button></section>
+        <section class="side-section inventory-section"><div class="section-heading"><span>◇</span> SATCHEL</div><div class="inventory-list" id="inventory-list"></div></section>
+        <div class="sidebar-bottom"><span>✦ THE NIGHT IS YOURS ✦</span><button id="help-button">CONTROLS</button></div>
+      </aside>
+    </div>
+    <footer class="bottom-bar"><span>© 2026 MOONVEIL TALES</span><span class="footer-center">A LITTLE STORY ABOUT BECOMING SOMETHING ELSE</span><span id="save-state">AUTOSAVED</span></footer>
+  </main>
+  <div class="modal-backdrop hidden" id="modal-backdrop"><div class="modal-card" id="modal-card"><button class="modal-close" id="modal-close">×</button><div id="modal-content"></div></div></div>
+  <div class="touch-controls" id="touch-controls"><button data-move="up">▲</button><div><button data-move="left">◀</button><button data-move="down">▼</button><button data-move="right">▶</button></div><button class="touch-action" id="touch-action">E · ACT</button></div>
+  <script src="game.js"></script>
+</body>
+</html>
